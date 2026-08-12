@@ -1,0 +1,22 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch: # يتيح لك تشغيل البناء بزر يدوي بضغطة واحدة
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Build with Buildozer Action
+        uses: ArtemSydoryk/buildozer-action@v1.2.0
+        with:
+          save_artifact: true
